@@ -1,4 +1,4 @@
-{ pkgs, lib, neovim-unwrapped ? pkgs.neovim-unwrapped }:
+{ pkgs, lib, neovim-unwrapped ? pkgs.neovim-unwrapped, withCord ? true }:
 let
   extraPackages = with pkgs; [
     # specific language servers
@@ -18,21 +18,23 @@ let
     ripgrep
   ];
   
-  vimPlugins = with pkgs.vimPlugins; [
-    nvim-lspconfig
-    neo-tree-nvim
-    bufferline-nvim
-    snacks-nvim
-    telescope-nvim
-    trouble-nvim
-    cord-nvim
-    catppuccin-nvim
-    indent-blankline-nvim
-    lualine-nvim
-    blink-cmp
-    nvim-treesitter-context
-    todo-comments-nvim
-  ];
+  vimPlugins = 
+    with pkgs.vimPlugins; 
+    [
+      nvim-lspconfig
+      neo-tree-nvim
+      bufferline-nvim
+      snacks-nvim
+      telescope-nvim
+      trouble-nvim
+      catppuccin-nvim
+      indent-blankline-nvim
+      lualine-nvim
+      blink-cmp
+      nvim-treesitter-context
+      todo-comments-nvim
+    ] 
+    ++ lib.optional withCord cord-nvim;
 in
 pkgs.wrapNeovimUnstable neovim-unwrapped {
   viAlias = true;
