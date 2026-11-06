@@ -43,4 +43,6 @@ require('blink.cmp').setup({
 
 })
 
+--  TODO: put in own files?
 require('trouble').setup({ })
+require('diffview').setup({ })

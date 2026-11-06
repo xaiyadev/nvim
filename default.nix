@@ -33,6 +33,7 @@ let
       blink-cmp
       nvim-treesitter-context
       todo-comments-nvim
+      diffview-plus-nvim
     ] 
     ++ lib.optional withCord cord-nvim;
 in
