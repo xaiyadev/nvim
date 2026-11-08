@@ -10,9 +10,12 @@ let
     pyright
     # pkgs.stylelint-lsp
     typescript-language-server
-    vue-language-server
+    # vue-language-server
     yaml-language-server
     nil
+
+    gopls
+    go # TODO needed?
 
     # telescope packages
     ripgrep
@@ -31,9 +34,13 @@ let
       indent-blankline-nvim
       lualine-nvim
       blink-cmp
-      nvim-treesitter-context
       todo-comments-nvim
       diffview-plus-nvim
+
+      # configure treesitter
+      nvim-treesitter-context
+      nvim-treesitter.withAllGrammars
+
     ] 
     ++ lib.optional withCord cord-nvim;
 in

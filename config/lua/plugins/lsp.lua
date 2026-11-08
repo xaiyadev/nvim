@@ -12,34 +12,29 @@ require('blink.cmp').setup({
 
     appearance = {},
 
-    list = {
-        cycle = {
-            from_top = false,
-            from_bottom = false,
-        },
-    },
+    signature = { enabled = true },
 
     completion = {
+        ghost_text = { enabled = true },
+        list = {
+            cycle = {
+                from_top = false,
+                from_bottom = false,
+            },
+        },
+
         menu = {
             scrolloff = 0,
             border = "none",
             draw = {
                 padding = 1,
                 gap = 1,
-            },
-            treesitter = { "buffer", "lsp" },
-            ghost_text = {
-                enabled = true,
+                treesitter = { "buffer", "lsp" },
             },
         },
     },
 
-    sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
-        signature = {
-            enabled = true,
-        },
-    },
+    sources = { default = { "lsp", "path", "snippets", "buffer" } },
 
 })
 

@@ -1,27 +1,28 @@
 require('catppuccin').setup({
     flavour = "mocha",
+    lsp_styles = {
+        enabled = true,
+
+        virtual_text = {
+            errors = { "italic" },
+            hints = { "italic" },
+            warnings = { "italic" },
+            information = { "italic" },
+        },
+
+        underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
+        },
+    },
+
     transparent_background = false,
 
     integrations = {
         treesitter = true,
         treesitter_context = true,
-        native_lsp = {
-            enabled = true,
-
-            virtual_text = {
-                errors = { "italic" },
-                hints = { "italic" },
-                warnings = { "italic" },
-                information = { "italic" },
-            },
-
-            underlines = {
-                errors = { "undercurl" },
-                hints = { "undercurl" },
-                warnings = { "undercurl" },
-                information = { "undercurl" },
-            },
-        },
         blink_cmp = true,
         lsp_trouble = true,
         indent_blankline = {
@@ -36,7 +37,6 @@ require('lualine').setup({
     options = {
         icons_enabled = true,
         theme = "auto",
-        component_seperators = "",
         section_separators = "",
         disabled_filetypes = {
             statusline = {

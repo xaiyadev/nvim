@@ -8,7 +8,6 @@ require('neo-tree').setup({
         },
     },
 
-    pupup_border_style = "",
     filesystem = {
         filtered_items = {
             visible = true,

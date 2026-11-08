@@ -16,9 +16,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- keymaps
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-        vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
-
     end
 })
 
@@ -46,7 +43,9 @@ local servers = {
 
         cmd = {
             "gopls", -- share the gopls instance if there is one already
+
             "-remote.debug=:0",
+            "-remote=auto",
         },
 
         settings = {
@@ -86,7 +85,7 @@ local servers = {
     pyright = {},
     -- stylelint_lsp = {},
     ts_ls = {},
-    vue_ls = {},
+    -- vue_ls = {}, -- maybe check later?
     yamlls = {},
 
     nil_ls = {

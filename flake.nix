@@ -5,7 +5,7 @@
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
   };
 
-  outputs = inputs@{
+  outputs = {
     nixpkgs,
     ...
   }:
@@ -23,10 +23,6 @@
   in
   {
     packages = forAllSystems (pkgs: {
-      default = pkgs.callPackage ./default.nix { };
-    });
-
-    legacyPackages = forAllSystems (pkgs: {
       default = pkgs.callPackage ./default.nix { };
     });
   };
