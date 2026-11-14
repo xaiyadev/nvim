@@ -84,8 +84,26 @@ local servers = {
     },
     pyright = {},
     -- stylelint_lsp = {},
-    ts_ls = {},
-    -- vue_ls = {}, -- maybe check later?
+    ts_ls = {
+        filetypes = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+        },
+        init_options = {
+            plugins = {
+                {
+                    -- add typescript vue support
+                    name = "@vue/typescript_plugin",
+                    location = vim.g.vue_ts_plugin_path,
+                    languages = { "vue" },
+                }
+            },
+        },
+    },
+    vue_ls = {},
     yamlls = {},
 
     nil_ls = {

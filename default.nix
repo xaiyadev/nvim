@@ -10,7 +10,7 @@ let
     pyright
     # pkgs.stylelint-lsp
     typescript-language-server
-    # vue-language-server
+    vue-language-server
     yaml-language-server
     nil
 
@@ -49,7 +49,11 @@ pkgs.wrapNeovimUnstable neovim-unwrapped {
   vimAlias = true;
 
   # lua code to put into the generated init.lua file
-  luaRcContent = lib.fileContents ./config/init.lua;
+  luaRcContent = 
+    # global configurations
+    ''vim.g.vue_ts_plugin_path = "${pkgs.vue-language-server}/lib/language-tools/packages/language-server"''
+    # our init.lua
+    + lib.fileContents ./config/init.lua;
 
   # add connections to nvim needed packages 
   wrapperArgs = [ "--prefix" "PATH" ":" (lib.makeBinPath extraPackages) ];
