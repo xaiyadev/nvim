@@ -1,5 +1,5 @@
 -- leader key
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 
 -- colors
 vim.o.termguicolors = true
