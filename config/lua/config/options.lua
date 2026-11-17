@@ -1,3 +1,6 @@
+-- leader key
+vim.g.mapleader = ","
+
 -- colors
 vim.o.termguicolors = true
 vim.o.hlsearch = false

@@ -1,4 +1,4 @@
-{ pkgs, lib, neovim-unwrapped ? pkgs.neovim-unwrapped, withCord ? true }:
+{ pkgs, lib, neovim-unwrapped ? pkgs.neovim-unwrapped, profile ? "personal" }:
 let
   extraPackages = with pkgs; [
     # specific language servers
@@ -19,10 +19,12 @@ let
 
     # telescope packages
     ripgrep
+
+    claude-code
   ];
-  
-  vimPlugins = 
-    with pkgs.vimPlugins; 
+
+  vimPlugins =
+    with pkgs.vimPlugins;
     [
       nvim-lspconfig
       neo-tree-nvim
@@ -36,13 +38,14 @@ let
       blink-cmp
       todo-comments-nvim
       diffview-plus-nvim
+      claudecode-nvim
 
       # configure treesitter
       nvim-treesitter-context
       nvim-treesitter.withAllGrammars
 
     ] 
-    ++ lib.optional withCord cord-nvim;
+    ++ lib.optional (profile != "blmedia") cord-nvim;
 in
 pkgs.wrapNeovimUnstable neovim-unwrapped {
   viAlias = true;
@@ -56,7 +59,10 @@ pkgs.wrapNeovimUnstable neovim-unwrapped {
     + lib.fileContents ./config/init.lua;
 
   # add connections to nvim needed packages 
-  wrapperArgs = [ "--prefix" "PATH" ":" (lib.makeBinPath extraPackages) ];
+  wrapperArgs = [
+    "--prefix" "PATH" ":" (lib.makeBinPath extraPackages)
+    "--set" "NVIM_PROFILE" profile
+  ];
 
   plugins = [
     # install our own configuration as a plugin

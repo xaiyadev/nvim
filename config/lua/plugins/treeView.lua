@@ -22,5 +22,4 @@ require('neo-tree').setup({
     },
 })
 
--- TODO: find out how to manage keymaps
-vim.keymap.set({ "n" }, "<C-n>", "<cmd>Neotree toggle<cr>", { desc = "Toggle tree view" })
+vim.keymap.set({ "n" }, "<leader>n", "<cmd>Neotree toggle<cr>", { desc = "Toggle tree view" })

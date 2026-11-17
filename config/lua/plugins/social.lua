@@ -1,4 +1,7 @@
--- check if cord exists (only installed if 'withCord' nix variable is set to true)
+-- check if current profile is not set to blmedia
+local account = require('config/account')
+if account.is_blmedia() then return end
+
 local ok, cord = pcall(require, 'cord')
 if not ok then return end
 
